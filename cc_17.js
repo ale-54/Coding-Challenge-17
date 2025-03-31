@@ -60,3 +60,29 @@ const vipCustomer1 = new VIPCustomer(`Hachiware`, `hachiwareuwa@gmail.com`, `Dia
 vipCustomer1.addPurchase(65016); //$65016
 console.log(`VIP: ${vipCustomer1.name} (${vipCustomer1.vipLevel} Tier), 
     Total (incl. bonus): $${vipCustomer1.getTotalSpent()}`); //bonus: $71517.6
+
+//Task 4: Build a Client Report System
+const customer2 = new Customer('Usagi Rabbit', 'omnomnomusagi@gmail.com'); //customer creation
+customer2.addPurchase(23); //23
+customer2.addPurchase(40); //40
+
+const vipCustomer2 = new VIPCustomer('Momonga', 'selfishsquirrel@gmail.com', 'Platinum'); //vip customer creation, momonga ballin
+vipCustomer2.addPurchase(1000); //1000
+vipCustomer2.addPurchase(500); //500
+
+salesRep.addClient(customer2); //adding usagi to clientele
+salesRep.addClient(vipCustomer2); //adding momonga to clientele
+//created more customers for task 4
+
+const allCustomers = [customer1, customer2, vipCustomer1, vipCustomer2]; //put all customers in one list
+const totalRevenue = allCustomers.reduce((sum, customer) => sum + customer.getTotalSpent(),0); //calculated total rev from all customers
+console.log(`Total Revenue: $${totalRevenue}`); //logged total revenue
+
+const highSpendingCustomers = allCustomers.filter(customer => customer.getTotalSpent() > 500); //filtered to see customers who spent over $500
+console.log(`High Spenders:`, highSpendingCustomers); //logged high spenders
+
+const customerSummary = allCustomers.map(customer => ({
+    Name: customer.name,
+    Total: customer.getTotalSpent()
+})); //map to crete array of customers and total spent
+console.log(`Customer Summary:`, customerSummary); //logged summary
