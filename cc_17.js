@@ -20,3 +20,26 @@ console.log(`Total Spent: $${customer1.getTotalSpent()}`); //logging customer cr
 console.log(`New Customer Created! 
     Name: ${customer1.name}
     Email: ${customer1.email}`); //logging customer creation
+
+//Task 2: Create a SalesRep Class
+class SalesRep {
+    constructor(name) {
+        this.name = name;
+        this.clients = []; //array of customers
+    };
+    addClient(customer) {
+        this.clients.push(customer); //adding customer to the list
+    }
+    getClientTotal(name) {
+        const client = this.clients.find(client => client.name === name); //finding client by name
+        if (client) {
+            return client.getTotalSpent();
+        }
+    }
+}
+//Task 2: Test Case
+const salesRep = new SalesRep(`Kurimanju`); //creating sales rep
+salesRep.addClient(customer1); //adding customer to client list
+console.log(`Sales Representative: ${salesRep.name}
+    Client: ${customer1.name}
+    Total Spent: $${customer1.getTotalSpent()}`); //logging sales rep client and total spent
